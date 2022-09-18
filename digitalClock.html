@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Digital Clock</title>
+		<style>
+			.full-page{
+				background-color:black;
+			}
+			.container{
+				background-color:white;
+				position: absolute;
+        top: 50%;
+        left: 40%;
+			}
+			.hours-div , .minutes-div , .seconds-div , .daylight , .divider {
+				display:inline-block;
+				font-size:70px;
+			}
+
+		</style>
+
+
+	</head>
+	<body class="full-page">
+		<div class="container">
+			<div class="hours-div" id="hour"></div>
+			<div class="divider">:</div>
+			<div class="minutes-div" id="min"></div>
+			<div class="divider">:</div>
+			<div class="seconds-div" id="sec"></div>
+			<div class="divider"> </div>
+			<div class="daylight" id="day-session"></div>
+		</div>
+
+		<script>
+			//A function to display date.
+			function displayTime(){
+				//a variable dateTime which stores the return value of date which is a built-in function in javascript. 
+				var dateTime = new Date();
+				// it will get only the hours value from the date built-in function
+				var hours = dateTime.getHours();
+				// it will get only the minutes value from the date built-in function
+				var minutes =dateTime.getMinutes();
+				// it will get only the sec value from the date built-in function	
+				var seconds = dateTime.getSeconds();
+
+				if(hours >= 12){
+					// changes am/pm according to time 
+					document.getElementById('day-session').innerHTML ='PM';
+				}
+				else {
+					document.getElementById('day-session').innerHTML = 'AM';
+				}
+        //it will print the hour,min and sec value 
+				document.getElementById('hour').innerHTML = hours;
+				document.getElementById('min').innerHTML = minutes;
+				document.getElementById('sec').innerHTML = seconds;
+			}
+			//the function will run for every one sec.
+			setInterval(displayTime, 1000);
+
+
+
+		</script>
+	</body>
+</html>
